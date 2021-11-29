@@ -46,6 +46,25 @@ const routes = [
           }
         ]
       },
+            // 商品管理
+            {
+              path: 'shop',
+              component:()=>import(/* webpackChunkName: "shop" */ '../views/index/shop.vue'),
+              children:[
+                {        
+                  path:'list',
+                  component:()=>import(/* webpackChunkName: "shop" */ '../components/list.vue')
+                },
+                {        
+                  path:'parameter',
+                  component:()=>import(/* webpackChunkName: "shop" */ '../components/parameter.vue')
+                },
+                {        
+                  path:'sort',
+                  component:()=>import(/* webpackChunkName: "shop" */ '../components/sort.vue')
+                },
+              ]
+            },
     ]
   }
 ]
