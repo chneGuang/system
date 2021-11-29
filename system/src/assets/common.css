@@ -226,3 +226,7 @@ caption,
 th {
     text-align: left;
 }
+/* 修改左侧列表字体大小 */
+.el-submenu__title{
+    font-size: 18px !important;
+  }

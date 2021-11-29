@@ -16,6 +16,10 @@ const routes = [
     path:'/index',
     component:()=>import('../views/index.vue'),
     children:[
+      // {
+      //   path:'/',
+      //   redirect:'data'
+      // },
       // 用户
       {
         path:'user',
