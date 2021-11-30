@@ -46,6 +46,21 @@ const routes = [
           }
         ]
       },
+      //权限
+      {
+        path:'permissions',
+        component:()=>import('../views/index/permissions.vue'),
+        children:[
+          {
+            path:'/',
+            redirect:'the_role_list'
+          },
+          {
+            path:'the_role_list',
+            component:()=>import('../components/the_role_list.vue')
+          }
+        ]
+      },
     ]
   }
 ]
