@@ -6,25 +6,24 @@
     </header>
     <div class="concent">
       <div class="left">
-        <div class="top">|||</div>
         <el-menu
           :default-active="this.$route.path"
           :router="true"
-          unique-opened="true"
+          :unique-opened="true"
+          :collapse="iscollapse"
           class="el-menu-vertical-demo"
           background-color="#333744"
           text-color="#fff"
           active-text-color="#ffd04b"
-          @open="handleOpen"
-          @close="handleClose"
         >
+          <div class="top" @click="change()">|||</div>
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-user-solid"></i>
               <span>用户管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/index/user/user_list"><i class="el-icon-menu"></i>用户列表</el-menu-item>
+              <el-menu-item  @click=go() index="/index/user/user_list"><i class="el-icon-menu"></i>用户列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="2">
@@ -34,7 +33,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="/index/permissions/the_role_list"><i class="el-icon-menu"></i>角色列表</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>权限列表</el-menu-item>
+              <el-menu-item index="/index/permissions/the_power_list"><i class="el-icon-menu"></i>权限列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -43,9 +42,9 @@
               <span>商品管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><i class="el-icon-menu"></i>商品列表</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>分类参数</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>商品分类</el-menu-item>
+              <el-menu-item index="/index/shop/list"><i class="el-icon-menu"></i>商品列表</el-menu-item>
+              <el-menu-item index="/index/shop/parameter"><i class="el-icon-menu"></i>分类参数</el-menu-item>
+              <el-menu-item index="/index/shop/sort"><i class="el-icon-menu"></i>商品分类</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="4">
@@ -63,13 +62,16 @@
               <span>数据统计</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/index/data/data_list"><i class="el-icon-menu"></i>数据报表</el-menu-item>
+              <el-menu-item @click=go() index="/index/data/data_list"><i class="el-icon-menu"></i>数据报表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
       </div>
       <div class="right">
-        <router-view></router-view>
+        <div class="index" v-if="!open"> 
+          Welcome
+        </div>
+        <router-view v-else></router-view>
       </div>
     </div>
   </div>
@@ -79,13 +81,18 @@
 export default {
   props: {},
   data() {
-    return {};
+    return {
+      open:false,
+      iscollapse:false
+    };
   },
   methods: {
-    handleOpen() {
+    go(){
+      this.open=true;
     },
-    handleClose() {
-    },
+    change(){
+      this.iscollapse=!this.iscollapse
+    }
   },
   components: {},
 };
@@ -123,23 +130,24 @@ header{
 .concent{
   height: 1107.5px;
   display: flex;
-  .left{
-    width: 250px;
+  .el-menu-vertical-demo{
     height: 100%;
+    
     background-color: #333744; 
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
     .top{
-      height: 30px;
-      text-align: center;
-      line-height: 30px;
-      font-size: 16px;
-      color: #ffe4c3;
-      background-color: #4a5064;
+      text-align:center;
     }
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 250px;
+    min-height: 400px;
   }
   .right{
     flex: 1;
+    padding: 40px 20px;
+    background-color: #eaedf1;
   }
 }
 </style>

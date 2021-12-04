@@ -1,6 +1,6 @@
 <template>
-  <div class="roles">
-      <router-view></router-view>
+  <div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,8 +11,7 @@ export default {
     return {};
   },
   methods: {},
-  components: {
-  },
+  components: {},
 };
 </script>
 

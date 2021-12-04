@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -12,7 +13,8 @@ html {
     /* 字体大小设置为 100px */
 }
 
-html ,body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -225,4 +227,13 @@ table {
 caption,
 th {
     text-align: left;
+}
+
+/* 修改左侧列表字体大小 */
+.el-submenu__title {
+    font-size: 18px !important;
+}
+
+#app {
+    min-width: 1366px;
 }
