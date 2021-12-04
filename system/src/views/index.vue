@@ -100,6 +100,7 @@ export default {
 
 <style scoped lang="scss">
 .back{
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -128,11 +129,10 @@ header{
     }
 }
 .concent{
-  height: 1107.5px;
+  flex: 1;
   display: flex;
   .el-menu-vertical-demo{
     height: 100%;
-    
     background-color: #333744; 
     display: flex;
     flex-direction: column;
