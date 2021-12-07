@@ -230,3 +230,11 @@ th {
 .el-submenu__title{
     font-size: 18px !important;
   }
+  /* 设置表格表头和行的高度 */
+  .table_top{
+    height: 70px !important;
+    box-sizing: border-box;
+  }
+  .el-table__row{
+      height: 56px !important;
+  }

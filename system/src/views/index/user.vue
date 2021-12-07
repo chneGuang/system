@@ -1,25 +1,18 @@
 <template>
-    <div>
-        用户
-    </div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-    props: {
+  props: {},
+  data() {
+    return {};
+  },
 
-    },
-    data() {
-        return {
-
-        };
-    },
-    methods: {
-
-    },
-    components: {
-
-    },
+  methods: {},
+  components: {},
 };
 </script>
 

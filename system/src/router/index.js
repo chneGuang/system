@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:'/',
-    redirect:'/index'
+    redirect:'/login'
   },
   {
     path:'/login',
@@ -35,6 +35,21 @@ const routes = [
           }
         ]
       },
+      // 订单
+      {
+        path:'order',
+        component:()=>import('../views/index/order.vue'),
+        children:[
+          {
+            path:'/',
+            redirect:'order_list'
+          },
+          {
+            path:'order_list',
+            component:()=>import('../components/order_list.vue')
+          }
+        ]
+      },
       // 数据
       {
         path:'data',
@@ -57,5 +72,11 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to,from,next)=>{
+  if(to.path!='/login' && !sessionStorage.getItem('token')){
+    next('/login');
+  }else{
+    next();
+  }
+})
 export default router
