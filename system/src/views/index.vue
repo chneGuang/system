@@ -32,8 +32,8 @@
               <span>权限管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><i class="el-icon-menu"></i>角色列表</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>权限列表</el-menu-item>
+              <el-menu-item index="/index/permissions/the_role_list"><i class="el-icon-menu"></i>角色列表</el-menu-item>
+              <el-menu-item index="/index/permissions/the_power_list"><i class="el-icon-menu"></i>权限列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -42,9 +42,9 @@
               <span>商品管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><i class="el-icon-menu"></i>商品列表</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>分类参数</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>商品分类</el-menu-item>
+              <el-menu-item index="/index/shop/list"><i class="el-icon-menu"></i>商品列表</el-menu-item>
+              <el-menu-item index="/index/shop/parameter"><i class="el-icon-menu"></i>分类参数</el-menu-item>
+              <el-menu-item index="/index/shop/sort"><i class="el-icon-menu"></i>商品分类</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="4">
@@ -119,14 +119,13 @@ header,.content{
     justify-content: space-between;
 }
 header{
-    align-items: center;
-    height: 60px;
+    // height: 60px;
+    align-items: center; 
     background-color: #373d41;
-    padding: 0px 20px;
+    padding: 10px 20px;
     h1{
         font-size: 20px;
         color: #fff;
-        
     }
     button{
         display: block;
@@ -142,7 +141,6 @@ header{
   display: flex;
   .el-menu-vertical-demo{
     height: 100%;
-    
     background-color: #333744; 
     display: flex;
     flex-direction: column;
