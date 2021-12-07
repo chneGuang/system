@@ -1,9 +1,8 @@
 import axios from 'axios'
-
 // 二次封装axios 
 export default function (config){
     const myaxios = axios.create({
-        baseURL:process.env.VUE_APP_BASE_URL,
+        baseURL:'/api',
         // timeout: 1000,
     })
 

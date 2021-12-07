@@ -68,10 +68,10 @@
         </el-menu>
       </div>
       <div class="right">
-        <div class="index" v-if="!open"> 
+        <!-- <div class="index" v-if="!open"> 
           Welcome
-        </div>
-        <router-view v-else></router-view>
+        </div> -->
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@ export default {
   props: {},
   data() {
     return {
-      open:false,
+      // open:false,
       iscollapse:false
     };
   },
@@ -100,6 +100,7 @@ export default {
 
 <style scoped lang="scss">
 .back{
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -128,7 +129,7 @@ header{
     }
 }
 .concent{
-  height: 1107.5px;
+  flex: 1;
   display: flex;
   .el-menu-vertical-demo{
     height: 100%;
