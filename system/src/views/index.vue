@@ -2,7 +2,7 @@
   <div class="back">
     <header>
       <h1>电商后台管理系统</h1>
-      <button>退出</button>
+      <button @click="exit()">退出</button>
     </header>
     <div class="concent">
       <div class="left">
@@ -32,8 +32,8 @@
               <span>权限管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><i class="el-icon-menu"></i>角色列表</el-menu-item>
-              <el-menu-item index="1-2"><i class="el-icon-menu"></i>权限列表</el-menu-item>
+              <el-menu-item index="/index/permissions/the_role_list"><i class="el-icon-menu"></i>角色列表</el-menu-item>
+              <el-menu-item index="/index/permissions/the_power_list"><i class="el-icon-menu"></i>权限列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">
@@ -53,7 +53,7 @@
               <span>订单管理</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="1-1"><i class="el-icon-menu"></i>订单列表</el-menu-item>
+              <el-menu-item @click=go() index="/index/order/order_list"><i class="el-icon-menu"></i>订单列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
            <el-submenu index="5">
@@ -68,9 +68,9 @@
         </el-menu>
       </div>
       <div class="right">
-        <!-- <div class="index" v-if="!open"> 
+        <div class="index" v-if="open"> 
           Welcome
-        </div> -->
+        </div> 
         <router-view></router-view>
       </div>
     </div>
@@ -82,16 +82,25 @@ export default {
   props: {},
   data() {
     return {
-      // open:false,
-      iscollapse:false
+      open:false,
+      iscollapse:false,
     };
   },
   methods: {
     go(){
-      this.open=true;
+      this.open=false;
     },
     change(){
       this.iscollapse=!this.iscollapse
+    },
+    exit(){
+      sessionStorage.removeItem('token');
+      this.$router.push('/login');
+    }
+  },
+  mounted(){
+    if(this.$router.currentRoute.path=='/index'){
+      this.open=true;
     }
   },
   components: {},
@@ -110,14 +119,13 @@ header,.content{
     justify-content: space-between;
 }
 header{
-    align-items: center;
-    height: 60px;
+    // height: 60px;
+    align-items: center; 
     background-color: #373d41;
-    padding: 0px 20px;
+    padding: 10px 20px;
     h1{
         font-size: 20px;
         color: #fff;
-        
     }
     button{
         display: block;
@@ -129,11 +137,10 @@ header{
     }
 }
 .concent{
-  flex: 1;
+  flex:1;
   display: flex;
   .el-menu-vertical-demo{
     height: 100%;
-    
     background-color: #333744; 
     display: flex;
     flex-direction: column;

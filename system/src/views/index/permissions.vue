@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <router-view></router-view>
+  <div class="roles">
+      <router-view></router-view>
   </div>
 </template>
 
@@ -10,12 +10,11 @@ export default {
   data() {
     return {};
   },
-
   methods: {},
-  components: {},
+  components: {
+  },
 };
 </script>
 
 <style scoped lang="scss">
-
 </style>

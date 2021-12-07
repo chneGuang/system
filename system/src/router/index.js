@@ -3,9 +3,10 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
-    redirect: '/index'
+const routes = [
+  {
+    path:'/',
+    redirect:'/login'
   },
   {
     path: '/login',
@@ -33,6 +34,21 @@ const routes = [{
           }
         ]
       },
+      // 订单
+      {
+        path:'order',
+        component:()=>import('../views/index/order.vue'),
+        children:[
+          {
+            path:'/',
+            redirect:'order_list'
+          },
+          {
+            path:'order_list',
+            component:()=>import('../components/order_list.vue')
+          }
+        ]
+      },
       // 数据
       {
         path: 'data',
@@ -45,6 +61,24 @@ const routes = [{
             path: 'data_list',
             component: () => import('../components/data_list.vue')
           }
+        ]
+      },
+      //权限
+      {
+        path: 'permissions',
+        component: () => import( /* webpackChunkName: "permissions" */ '../views/index/permissions.vue'),
+        children: [{
+            path: '/',
+            redirect: 'the_role_list'
+          },
+          {
+            path: 'the_role_list',
+            component: () => import( /* webpackChunkName: "permissions" */ '../components/the_role_list.vue')
+          },
+          {
+            path: 'the_power_list',
+            component: () => import( /* webpackChunkName: "permissions" */ '../components/the_power_list.vue')
+          },
         ]
       },
       // 商品管理
@@ -76,5 +110,11 @@ const routes = [{
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach((to,from,next)=>{
+  if(to.path!='/login' && !sessionStorage.getItem('token')){
+    next('/login');
+  }else{
+    next();
+  }
+})
 export default router
